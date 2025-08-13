@@ -1,0 +1,113 @@
+{% extends "base.html" %}
+{% block content %}
+
+<!-- HERO -->
+<section id="home" class="d-flex align-items-center justify-content-center text-white text-center hero-section">
+  <div class="overlay"></div>
+  <div class="content">
+    <img src="{{ url_for('static', filename='images/profile.jpg') }}" alt="Leonard" class="img-fluid rounded-circle shadow mb-4 profile-pic">
+    <h1 class="display-4 fw-bold">Helping Young Kenyans Find Real Hustles, Learn Digital Skills & Earn Online</h1>
+    <p class="lead mb-4">I’m Leonard — Python developer and founder of Rongoma KE. I build tools, teach practical skills, and guide youth to real opportunities.</p>
+    <a href="#about" class="btn btn-primary btn-lg me-2 shadow-sm">Discover More</a>
+    <a href="{{ url_for('static', filename='Leonard_CV.pdf') }}" class="btn btn-outline-light btn-lg shadow-sm" download>📄 Download CV</a>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="py-5">
+  <div class="container">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-6">
+        <h2 class="fw-bold mb-3">About Me</h2>
+        <p>
+          I started with a simple goal: learn practical tech skills and turn them into real income. 
+          I’ve built projects like an Expense Tracker (CLI + Tkinter GUI) and now I’m building web apps with Flask.
+        </p>
+        <p>
+          Through <strong>Rongoma KE</strong>, I share honest side hustle ideas, digital skills, and life guidance for Kenyan youth — 
+          focusing on what actually works. My mission is to help others build sustainable skills and confidence.
+        </p>
+      </div>
+      <div class="col-lg-6">
+        <div class="p-4 bg-light rounded-3 shadow-sm">
+          <h5 class="mb-3">Quick Facts</h5>
+          <ul class="mb-0">
+            <li>Python developer (Flask, automation, data basics)</li>
+            <li>Built and shipped a personal Expense Tracker app</li>
+            <li>Focused on real outcomes: skills → portfolio → income</li>
+            <li>Open to collaboration and client work</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="py-5 bg-light">
+  <div class="container">
+    <h2 class="fw-bold text-center mb-5">What I Do</h2>
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="card h-100 shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title">Digital Skills Training</h5>
+            <p class="card-text">Beginner-friendly training in Python and web development (Flask). Practical, project-first, and hands-on.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card h-100 shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title">Side Hustle Strategies</h5>
+            <p class="card-text">Realistic methods to start earning online: micro-services, automation gigs, and small business tools.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card h-100 shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title">Community & Life Skills</h5>
+            <p class="card-text">Rongoma KE content to build confidence, discipline, and focus — the foundation of growth.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="py-5">
+  <div class="container">
+    <h2 class="fw-bold text-center mb-4">Get In Touch</h2>
+    {% with messages = get_flashed_messages(with_categories=True) %}
+      {% if messages %}
+        <div class="container mb-3" style="max-width:700px;">
+          {% for category, msg in messages %}
+            <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+              {{ msg }}
+              <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+          {% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
+    <form action="{{ url_for('contact') }}" method="post" class="mx-auto" style="max-width:700px;">
+      <div class="mb-3">
+        <label class="form-label">Name</label>
+        <input name="name" type="text" class="form-control" placeholder="Your full name" required>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Email</label>
+        <input name="email" type="email" class="form-control" placeholder="you@example.com" required>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Message</label>
+        <textarea name="message" class="form-control" rows="5" placeholder="How can I help you?" required></textarea>
+      </div>
+      <button class="btn btn-primary btn-lg">Send Message</button>
+    </form>
+  </div>
+</section>
+
+{% endblock %}
