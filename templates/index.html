@@ -91,7 +91,7 @@
         </div>
       {% endif %}
     {% endwith %}
-    <form action="{{ url_for('contact') }}" method="post" class="mx-auto" style="max-width:700px;">
+    <form action="{{ url_for('contact') }}" method="POST" class="mx-auto" style="max-width:700px;">
       <div class="mb-3">
         <label class="form-label">Name</label>
         <input name="name" type="text" class="form-control" placeholder="Your full name" required>
@@ -104,7 +104,7 @@
         <label class="form-label">Message</label>
         <textarea name="message" class="form-control" rows="5" placeholder="How can I help you?" required></textarea>
       </div>
-      <button class="btn btn-primary btn-lg">Send Message</button>
+      <button type="submit" class="btn btn-primary btn-lg">Send Message</button>
     </form>
   </div>
 </section>
